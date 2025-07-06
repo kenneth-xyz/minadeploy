@@ -8,7 +8,7 @@ This project provides a quick way to deploy a Mina blockchain node using Docker 
 
 - Docker
 - Docker Compose
-- Recommended OS: Linux/macOS/WSL2
+- Recommended OS: Linux
 
 ## Quick Start
 
