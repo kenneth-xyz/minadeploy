@@ -14,7 +14,7 @@ services:
     command: >
       bash -c "
           mina daemon \
-          --block-producer-key /keys/my-wallet \
+            --block-producer-key /keys/my-wallet \
             --metrics-port 6060 \
             --limited-graphql-port 3095 \
             --coinbase-receiver ${COINBASE_RECEIVER} \
