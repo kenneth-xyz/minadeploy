@@ -7,20 +7,23 @@ services:
       - ${METRICS_PORT}:6060
     restart: always
     environment:
+      UPTIME_PRIVKEY_PASS: ${MINA_PRIVKEY_PASS}
       MINA_PRIVKEY_PASS: ${MINA_PRIVKEY_PASS}
+      COINBASE_RECEIVER: ${COINBASE_RECEIVER}
     volumes:
       - ${RUNDIR}/keys:/keys:ro
     entrypoint: []
-    command: >
-      bash -c "
-          mina daemon \
-            --block-producer-key /keys/my-wallet \
-            --metrics-port 6060 \
-            --limited-graphql-port 3095 \
-            --coinbase-receiver ${COINBASE_RECEIVER} \
-            --uptime-submitter-key /keys/my-wallet \
-            --uptime-url https://uptime-backend.minaprotocol.com/v1/submit \
-            --peer-list-url https://storage.googleapis.com/mina-seed-lists/mainnet_seeds.txt \
-            --log-level Info \
-            --file-log-level Debug
-      "
+    command:
+      - bash
+      - -c
+      - |
+        mina daemon \
+          --block-producer-key /keys/my-wallet \
+          --metrics-port 6060 \
+          --limited-graphql-port 3095 \
+          --coinbase-receiver $${COINBASE_RECEIVER} \
+          --uptime-submitter-key /keys/my-wallet \
+          --uptime-url https://uptime-backend.minaprotocol.com/v1/submit \
+          --peer-list-url https://storage.googleapis.com/mina-seed-lists/mainnet_seeds.txt \
+          --log-level Info \
+          --file-log-level Debug
