@@ -23,6 +23,6 @@ services:
           --coinbase-receiver ${COINBASE_RECEIVER} \
           --uptime-submitter-key /keys/my-wallet \
           --uptime-url https://uptime-backend.minaprotocol.com/v1/submit \
-          --peer-list-url https://storage.googleapis.com/mina-seed-lists/mainnet_seeds.txt \
+          --peer-list-url https://bootnodes.minaprotocol.com/networks/mainnet.txt \
           --log-level Info \
           --file-log-level Debug
